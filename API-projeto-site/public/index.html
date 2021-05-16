@@ -12,12 +12,36 @@
 </head>
 
 <body class="toLoad">
-
-
-
     <section id="loadScreen">
         <%- include('load.html'); %>
     </section>
+
+
+    <div class="content-holder">
+
+        <div class="side-menu">
+            <div class="profileIcon">
+                <div class="icon">
+                    <img id="summonerIcon" src="" alt="">
+                    <div id="level" class="level"></div>
+                </div>
+                <div id="username">
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="profile-home">
+                <div class="history-container">
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
     <!-- 
     <section class="mainContent">
         <div class="principal-bg">
@@ -37,10 +61,6 @@
             conforme você luta até a vitória.
         </p>
     </section> -->
-    <div class="page-content">
-        <img id="summonerIcon" src="" alt="">
-
-    </div>
 
     <script src="./js/main.js"></script>
     <script>
@@ -49,20 +69,36 @@
         let user = sessionStorage.getItem('user');
         user = JSON.parse(user);
 
-        let username = document.createElement('p');
-        let puuidUser = document.createElement('p');
-
         username.innerHTML = user.name;
-        puuidUser.innerHTML = user.summonerLevel;
+        level.innerHTML = user.summonerLevel;
 
 
 
 
-        pageContent.appendChild(username);
-        pageContent.appendChild(puuidUser);
 
         let icon = document.querySelector('#summonerIcon');
         icon.src = `http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/${user.profileIconId}.png`;
+
+
+
+        let accId = user.accountId;
+        let matchList = {}
+        fetch(`summoner/getMatchList/${accId}`, {
+            method: 'GET',
+        }).then((response) => {
+            if (response.ok) {
+                response.json().then(async (data) => {
+                    matchList = data;
+                    matchList.matches.splice(20, (matchList.matches.length - 1))
+                });
+            } else {
+                console.log(response.statusText)
+            }
+        }).catch((error) => {
+            console.log(error);
+        });
+
+
     </script>
 </body>
 

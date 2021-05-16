@@ -47,4 +47,38 @@ router.get('/getSummoner/:nameSummoner', async (req, res) => {
 });
 
 
+
+router.get('/getMatchList/:accountId', async (req, res) => {
+    try {
+
+        const { accountId } = req.params;
+        const object = await kayn.Matchlist.by.accountID(accountId);
+        object.startIndex = 0;
+        object.endIndex = 20;
+        return res.status(200).json(object);
+
+    } catch (error) {
+        console.log(error);
+        return res.status(400).send('Ocorreu um erro');
+
+    }
+});
+
+
+
+router.get('/getMatch/:matchId', async (req, res) => {
+    try {
+
+        const { matchId } = req.params;
+        const object = await kayn.Match.get(matchId);
+        return res.status(200).json(object);
+
+    } catch (error) {
+        console.log(error);
+        return res.status(400).send('Ocorreu um erro');
+
+    }
+})
+
+
 module.exports = router;
