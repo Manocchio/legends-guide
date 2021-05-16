@@ -80,5 +80,38 @@ router.get('/getMatch/:matchId', async (req, res) => {
     }
 })
 
+router.get('/getChampions', async (req, res) => {
+    try {
+        const championList = await kayn.DDragon.Champion.list();
+        return res.status(200).json(championList);
+    } catch (error) {
+        console.log(error);
+        return res.status(400).send('Ocorreu um erro');
+    }
+})
 
+
+
+
+
+router.get('/getChampion/:champId', async (req, res) => {
+    try {
+        const { champId } = req.params;
+        let championList = await kayn.DDragon.Champion.list();
+        championList = championList.data;
+        let champion = {}
+
+        for (let champ in championList) {
+
+            if (championList[champ].key == champId) {
+                champion = championList[champ];
+            }
+        }
+
+        return res.status(200).json(champion);
+    } catch (error) {
+        console.log(error);
+        return res.status(400).send('Ocorreu um erro');
+    }
+})
 module.exports = router;
