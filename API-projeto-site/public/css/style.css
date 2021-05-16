@@ -1,12 +1,20 @@
 @import url(//db.onlinewebfonts.com/c/12420e8c141ca7c3dff41de2d59df13e?family=BeaufortforLOL-Bold);
+@font-face {
+    font-family: "FF Mark W05";
+    src: url(https://lolstatic-a.akamaihd.net/accounts-fonts/FFMarkW05-Medium.662fbc7901e31d6bee9c91d5f2cf42a1.woff2) format("woff2"), url(https://lolstatic-a.akamaihd.net/accounts-fonts/FFMarkW05-Medium.ef7af500d9837d3d390db15c32e93167.woff) format("woff"), url(https://lolstatic-a.akamaihd.net/accounts-fonts/FFMarkW05-Medium.e857052c6a4c940090ac8470ecdaf9be.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
 :root {
     --p-font: 'BeaufortforLOL-Bold';
+    --body-font: 'FF Mark W05',
 }
 
 * {
     margin: 0;
     padding: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: var(--body-font);
 }
 
 body::-webkit-scrollbar {
@@ -152,15 +160,19 @@ svg {
 
 .title {
     font-family: var(--p-font);
-    background-color: red;
-    color: white;
+    color: rgba(0, 0, 0, 0.8);
     text-transform: uppercase;
     font-size: calc(22.24px + 2.25vw);
     line-height: 0.85;
     letter-spacing: 0.03em;
     transform: rotateY(-2deg);
-    padding: 10px;
     transition: 0.25s transform ease-in-out;
+}
+
+.title.red {
+    background-color: red;
+    color: white;
+    padding: 10px;
 }
 
 .title:hover {
@@ -223,6 +235,22 @@ svg {
 
 .page-content p {
     width: fit-content;
+}
+
+.loreSection {
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loreDesc {
+    margin-top: 50px;
+    width: 50%;
+    font-size: 21.5px;
+    letter-spacing: 1.2;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
 }
 
 @keyframes blueCircle {
