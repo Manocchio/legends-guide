@@ -1,0 +1,186 @@
+@import url(//db.onlinewebfonts.com/c/12420e8c141ca7c3dff41de2d59df13e?family=BeaufortforLOL-Bold);
+@font-face {
+    font-family: "FF Mark W05";
+    src: url(https://lolstatic-a.akamaihd.net/accounts-fonts/FFMarkW05-Medium.662fbc7901e31d6bee9c91d5f2cf42a1.woff2) format("woff2"), url(https://lolstatic-a.akamaihd.net/accounts-fonts/FFMarkW05-Medium.ef7af500d9837d3d390db15c32e93167.woff) format("woff"), url(https://lolstatic-a.akamaihd.net/accounts-fonts/FFMarkW05-Medium.e857052c6a4c940090ac8470ecdaf9be.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'FF Mark W05';
+}
+
+.main-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+    color: #fff;
+    align-items: center;
+    font-family: 'BeaufortforLOL-Bold';
+    font-size: 30px;
+    text-transform: uppercase;
+    z-index: 1;
+    font-weight: bold;
+    width: 60vw;
+    position: relative;
+}
+
+.right-side video {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+.left-side {
+    width: 35vw;
+    background-color: #fff;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-side form {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    justify-content: center;
+}
+
+.input-field {
+    background-color: #ededed;
+    border: 0;
+    width: 300px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    position: relative;
+}
+
+.input-field input {
+    background: transparent;
+    border-radius: 5px;
+    border: 0;
+    padding-top: 10px;
+    color: black;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    outline-color: #707070;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.input-field input[type="password"] {
+    font: caption;
+    font-size: 25px;
+    letter-spacing: 1.3px;
+}
+
+.input-field .placeholder {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    margin-left: 7.5px;
+    transition: 0.25s all ease-in-out;
+    z-index: -1;
+    text-transform: uppercase;
+    color: #707070;
+    font-weight: bold;
+}
+
+.mute-option {
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.icon::before {
+    font-family: 'Font Awesome 5 Free';
+    content: '\f028';
+    color: #fff;
+}
+
+.icon.muted::before {
+    font-family: 'Font Awesome 5 Free';
+    content: '\f6a9';
+    color: #fff;
+}
+
+.placeholder.focused {
+    top: 0;
+    margin-top: 3px;
+    font-size: 10px;
+}
+
+.input-field input:focus+.placeholder {
+    top: 0;
+    margin-top: 3px;
+    font-size: 10px;
+}
+
+.title {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.poro-icon {
+    margin-top: 1.5em;
+}
+
+.poro-icon img {
+    width: 100px;
+    height: 100px;
+}
+
+button[type="submit"] {
+    border: 2.5px solid #e8e8e8;
+    background-color: #fff;
+    width: 90px;
+    margin: 30px auto;
+    border-radius: 30px;
+    height: 80px;
+    outline: none;
+}
+
+button[type="submit"] i {
+    color: #e8e8e8;
+    font-size: 20px;
+}
+
+button[type="submit"].filled {
+    background-color: #d13639;
+    border: 2.5px solid #d13639;
+    cursor: pointer;
+}
+
+button[type="submit"].filled i {
+    color: #fff;
+}

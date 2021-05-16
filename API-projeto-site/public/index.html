@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site pessoal</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body class="toLoad">
+
+
+
+    <section id="loadScreen">
+        <%- include('load.html'); %>
+    </section>
+
+    <section class="mainContent">
+        <div class="principal-bg">
+
+            <div class="slogan">
+                <h1 class="title">League of Legends</h1>
+
+            </div>
+        </div>
+    </section>
+    <section class="page-content">
+    </section>
+
+
+
+    <script src="./js/main.js"></script>
+    <script>
+
+        let pageContent = document.querySelector('.page-content')
+        let user = sessionStorage.getItem('user');
+        user = JSON.parse(user);
+
+        let username = document.createElement('p');
+        let puuidUser = document.createElement('p');
+
+        username.innerHTML = user.name;
+        puuidUser.innerHTML = user.summonerLevel;
+
+
+        pageContent.appendChild(username);
+        pageContent.appendChild(puuidUser);
+
+
+    </script>
+</body>
+
+</html>

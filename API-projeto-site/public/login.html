@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
+    <title>Login</title>
+</head>
+
+<body>
+
+    <section class="main-container">
+        <div class="left-side">
+
+            <div class="poro-icon">
+                <img src="https://williamcardozo.github.io/projeto-final-cpw/images/logo.png" alt="">
+            </div>
+            <h1 class="title">Welcome to <br> Summoner's Guide </h1>
+
+            <form autocomplete="off" action="javascript:void(0)">
+                <div class="input-field">
+                    <input id="name" type="text">
+                    <span class="placeholder">Nome de usuário</span>
+
+                </div>
+                <div class="input-field">
+                    <input id="password" type="password">
+                    <span class="placeholder">Senha</span>
+
+                </div>
+
+
+                <button id="submitBtn" type="submit"><i class="fas fa-arrow-right"></i></button>
+            </form>
+
+
+        </div>
+        <div class="right-side">
+            <div id="mute" class="mute-option">
+                <i class="icon muted"></i>
+            </div>
+            <video id="login-video" autoplay muted loop>
+                <source src="video/odissey.webm" type="video/webm">
+                Seu navegador não suporta videos, tente trocar para o Chrome ou Mozila :D
+            </video>
+
+        </div>
+    </section>
+
+
+    <script src="./js/login.js"></script>
+
+
+</body>
+
+</html>
