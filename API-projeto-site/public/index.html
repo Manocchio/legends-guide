@@ -83,21 +83,68 @@
 
         let accId = user.accountId;
         let matchList = {}
-        fetch(`summoner/getMatchList/${accId}`, {
-            method: 'GET',
-        }).then((response) => {
-            if (response.ok) {
-                response.json().then(async (data) => {
-                    matchList = data;
-                    matchList.matches.splice(20, (matchList.matches.length - 1))
-                });
-            } else {
-                console.log(response.statusText)
-            }
-        }).catch((error) => {
-            console.log(error);
-        });
+        let history = []
 
+        getMatchList = async () => {
+            fetch(`summoner/getMatchList/${accId}`, {
+                method: 'GET',
+            }).then((response) => {
+                if (response.ok) {
+                    response.json().then(async (data) => {
+                        matchList = data;
+                        await matchList.matches.splice(20, (matchList.matches.length - 1));
+
+                        matchList.matches.forEach(match => {
+                            let newJson = {
+                                championId: match.champion,
+                                gameId: match.gameId,
+                                lane: match.lane,
+                                role: match.role,
+                                timestamp: match.timestamp,
+                                gameDuration: '',
+                                queueId: '',
+                                gameMode: '',
+                                gameType: '',
+                                teams: [],
+                                participants: [],
+                                participantIdentities: [],
+                            }
+
+                            fetch(`summoner/getMatch/${match.gameId}`, {
+                                method: 'GET'
+                            }).then((response) => {
+                                if (response.ok) {
+                                    response.json().then(async (data) => {
+                                        newJson.gameDuration = data.gameDuration;
+                                        newJson.queueId = data.queueId;
+                                        newJson.gameMode = data.gameMode;
+                                        newJson.gameType = data.gameType;
+                                        newJson.teams = data.teams;
+                                        newJson.participants = data.participants;
+                                        newJson.participantIdentities = data.participantIdentities;
+
+                                        await history.push(newJson);
+                                    })
+                                }
+                            }).catch((error) => {
+                                console.log(error);
+                            })
+
+                        })
+
+                    });
+                } else {
+                    console.log(response.statusText)
+                }
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
+
+
+
+
+        getMatchList();
 
     </script>
 </body>
