@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site pessoal</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/loading.css">
 
 </head>
 
@@ -17,7 +18,7 @@
     <section id="loadScreen">
         <%- include('load.html'); %>
     </section>
-
+    <!-- 
     <section class="mainContent">
         <div class="principal-bg">
 
@@ -26,8 +27,8 @@
 
             </div>
         </div>
-    </section>
-    <section class="loreSection">
+    </section> -->
+    <!-- <section class="loreSection">
         <h1 class="title">O que é League of Legends?</h1>
         <p class="loreDesc">League of Legends é um jogo de estratégia em que duas equipes de cinco poderosos Campeões se
             enfrentam para destruir a
@@ -35,8 +36,11 @@
             destruir torres
             conforme você luta até a vitória.
         </p>
-    </section>
+    </section> -->
+    <div class="page-content">
+        <img id="summonerIcon" src="" alt="">
 
+    </div>
 
     <script src="./js/main.js"></script>
     <script>
@@ -52,10 +56,13 @@
         puuidUser.innerHTML = user.summonerLevel;
 
 
+
+
         pageContent.appendChild(username);
         pageContent.appendChild(puuidUser);
 
-
+        let icon = document.querySelector('#summonerIcon');
+        icon.src = `http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/${user.profileIconId}.png`;
     </script>
 </body>
 

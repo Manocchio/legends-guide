@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 const { Kayn, REGIONS } = require('kayn');
+const apiKey = "RGAPI-5ae2693e-f7c3-4c4b-9650-73951ee3b8f0";
 
-const kayn = Kayn('RGAPI-a4364397-bc5d-41df-acdb-4e443949a15f')({
+
+const kayn = Kayn(apiKey)({
     region: REGIONS.BRAZIL,
     apiURLPrefix: 'https://%s.api.riotgames.com',
     locale: 'pt_BR',
