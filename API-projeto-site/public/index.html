@@ -85,6 +85,42 @@
         let matchList = {}
         let history = []
 
+
+
+        // fillUserHistory = () => {
+        //     if (historyFilled == true) {
+
+
+        //         history.forEach(match => {
+        //             let inMatchId;
+        //             let newJson = {
+        //                 championId: match.championId,
+        //                 gameDuration: match.gameDuration,
+        //                 gameMode: match.gameMode,
+        //                 gameType: match.gameType,
+        //                 data: {},
+
+        //             }
+
+        //             match.participantIdentities.forEach((participant) => {
+        //                 if (user.accountId == participant.player.accountId) {
+        //                     inMatchId = participant.participantId;
+        //                 }
+        //             })
+
+        //             match.participants.forEach(player => {
+        //                 if (player.participantId == inMatchId) {
+        //                     newJson.data = player;
+        //                     userHistory.push(newJson);
+
+        //                 }
+        //             })
+
+        //         })
+
+        //     }
+        // }
+
         getMatchList = async () => {
             fetch(`summoner/getMatchList/${accId}`, {
                 method: 'GET',
@@ -108,6 +144,7 @@
                                 teams: [],
                                 participants: [],
                                 participantIdentities: [],
+                                data: [],
                             }
 
                             fetch(`summoner/getMatch/${match.gameId}`, {
@@ -115,6 +152,7 @@
                             }).then((response) => {
                                 if (response.ok) {
                                     response.json().then(async (data) => {
+                                        let inMatchId;
                                         newJson.gameDuration = data.gameDuration;
                                         newJson.queueId = data.queueId;
                                         newJson.gameMode = data.gameMode;
@@ -123,15 +161,30 @@
                                         newJson.participants = data.participants;
                                         newJson.participantIdentities = data.participantIdentities;
 
+                                        newJson.participantIdentities.forEach((participant) => {
+                                            if (user.accountId == participant.player.accountId) {
+                                                inMatchId = participant.participantId;
+                                            }
+                                        })
+
+                                        newJson.participants.forEach(player => {
+                                            if (player.participantId == inMatchId) {
+                                                newJson.data = player;
+                                            }
+                                        })
+
+
                                         await history.push(newJson);
+
                                     })
+                                } else {
+                                    console.log(response.statusText);
                                 }
                             }).catch((error) => {
                                 console.log(error);
                             })
 
                         })
-
                     });
                 } else {
                     console.log(response.statusText)
@@ -140,11 +193,12 @@
                 console.log(error);
             });
         }
-
-
-
-
         getMatchList();
+
+
+
+
+
 
     </script>
 </body>
