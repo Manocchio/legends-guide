@@ -301,3 +301,23 @@ body.toLoad {
     letter-spacing: 1.5px;
     font-weight: bold;
 }
+
+.spells {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 10px;
+}
+
+.spell {
+    width: 36.5px;
+    height: 36.5px;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.spell img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
