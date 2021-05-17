@@ -109,6 +109,9 @@
 
         let insertMatch = async () => {
 
+            let win = history[history.length - 1].data.stats.win;
+            let cs = history[history.length - 1].data.stats.totalMinionsKilled;
+
             fetch(`summoner/getChampion/${history[history.length - 1].championId}`, {
                 method: 'GET'
             }).then((response) => {
@@ -123,8 +126,8 @@
                                     srcset="">
                             </div>
                             <div class="status-kda">
-                                <div class="status ${history[history.length - 1].data.stats.win ? 'win' : 'defeat'}">
-                                ${history[history.length - 1].data.stats.win ? 'Vitória' : 'Derrota'}    
+                                <div class="status ${win ? 'win' : 'defeat'}">
+                                ${win ? 'Vitória' : 'Derrota'}    
                                 </div>
                                 <div class="kda-holder">
                                     <div class="kda">1/0/10</div>
@@ -137,7 +140,7 @@
                                 <img src="https://streamie.com.br/wp-content/uploads/2017/08/img-icone-6.png" alt=""
                                     class="src">
                             </div>
-                            <p>140</p>
+                            <p>${cs}</p>
                         </div>
                     </div>`;
                     })
