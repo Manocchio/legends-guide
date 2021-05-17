@@ -105,18 +105,27 @@
         let accId = user.accountId;
         let matchList = {}
         let history = []
+        let championData = {};
 
+        let insertMatch = async () => {
 
-        let insertMatch = () => {
-            document.querySelector('.history-container').innerHTML += `
-            <div class="match">
+            fetch(`summoner/getChampion/${history[history.length - 1].championId}`, {
+                method: 'GET'
+            }).then((response) => {
+                if (response.ok) {
+                    response.json().then(async (data) => {
+
+                        document.querySelector('.history-container').innerHTML += `
+                        <div class="match">
                         <div class="general-stats">
                             <div class="champ-icon">
-                                <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/Aatrox.png" alt=""
+                                <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/${data.name}.png" alt=""
                                     srcset="">
                             </div>
                             <div class="status-kda">
-                                <div class="status defeat">Derrota</div>
+                                <div class="status ${history[history.length - 1].data.stats.win ? 'win' : 'defeat'}">
+                                ${history[history.length - 1].data.stats.win ? 'Vitória' : 'Derrota'}    
+                                </div>
                                 <div class="kda-holder">
                                     <div class="kda">1/0/10</div>
                                     <div class="ama">KDA: 3,2</div>
@@ -130,7 +139,12 @@
                             </div>
                             <p>140</p>
                         </div>
-                    </div>`
+                    </div>`;
+                    })
+                }
+            });
+
+
         }
 
 
@@ -142,7 +156,7 @@
                 if (response.ok) {
                     response.json().then(async (data) => {
                         matchList = data;
-                        await matchList.matches.splice(20, (matchList.matches.length - 1));
+                        await matchList.matches.splice(10, (matchList.matches.length - 1));
 
                         matchList.matches.forEach(match => {
                             let newJson = {
@@ -188,8 +202,8 @@
                                         })
 
 
-                                        await history.push(newJson);
-                                        insertMatch();
+                                        history.push(newJson);
+                                        await insertMatch();
 
                                     })
                                 } else {

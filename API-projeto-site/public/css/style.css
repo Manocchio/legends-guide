@@ -17,10 +17,6 @@
     font-family: var(--body-font);
 }
 
-body::-webkit-scrollbar {
-    /* display: none; */
-}
-
 body {
     color: black;
     background-color: white;
@@ -209,9 +205,23 @@ body.toLoad {
 
 .history-container {
     width: 90%;
-    height: 90%;
+    height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.75);
+}
+
+.history-container::-webkit-scrollbar {
+    width: 5px
+}
+
+.history-container::-webkit-scrollbar-track {
+    background: black;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+    background-color: #fff;
 }
 
 .match {
