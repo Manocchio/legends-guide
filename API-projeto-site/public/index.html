@@ -33,9 +33,28 @@
         <div class="content">
             <div class="profile-home">
                 <div class="history-container">
-                    <div class="match">
-
-                    </div>
+                    <!-- <div class="match">
+                        <div class="general-stats">
+                            <div class="champ-icon">
+                                <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/Aatrox.png" alt=""
+                                    srcset="">
+                            </div>
+                            <div class="status-kda">
+                                <div class="status defeat">Derrota</div>
+                                <div class="kda-holder">
+                                    <div class="kda">1/0/10</div>
+                                    <div class="ama">KDA: 3,2</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cs">
+                            <div class="icon">
+                                <img src="https://streamie.com.br/wp-content/uploads/2017/08/img-icone-6.png" alt=""
+                                    class="src">
+                            </div>
+                            <p>140</p>
+                        </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -89,9 +108,29 @@
 
 
         let insertMatch = () => {
-            document.querySelector('.match').innerHTML += history[history.length - 1].data.stats.win == true ? 'Vitória' : 'Derrota';
-            console.log(history[history.length - 1].data.stats);
-
+            document.querySelector('.history-container').innerHTML += `
+            <div class="match">
+                        <div class="general-stats">
+                            <div class="champ-icon">
+                                <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/Aatrox.png" alt=""
+                                    srcset="">
+                            </div>
+                            <div class="status-kda">
+                                <div class="status defeat">Derrota</div>
+                                <div class="kda-holder">
+                                    <div class="kda">1/0/10</div>
+                                    <div class="ama">KDA: 3,2</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cs">
+                            <div class="icon">
+                                <img src="https://streamie.com.br/wp-content/uploads/2017/08/img-icone-6.png" alt=""
+                                    class="src">
+                            </div>
+                            <p>140</p>
+                        </div>
+                    </div>`
         }
 
 
