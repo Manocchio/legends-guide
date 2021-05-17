@@ -54,6 +54,7 @@
                             </div>
                             <p>140</p>
                         </div>
+
                     </div> -->
                 </div>
             </div>
@@ -109,23 +110,25 @@
 
         let insertMatch = async () => {
 
-            let win = history[history.length - 1].data.stats.win;
-            let cs = history[history.length - 1].data.stats.totalMinionsKilled;
-            let kills = history[history.length - 1].data.stats.kills;
-            let deaths = history[history.length - 1].data.stats.deaths;
-            let assists = history[history.length - 1].data.stats.assists;
+            let matchPosition = history.length - 1;
+            let win = history[matchPosition].data.stats.win;
+            let cs = history[matchPosition].data.stats.totalMinionsKilled;
+            let kills = history[matchPosition].data.stats.kills;
+            let deaths = history[matchPosition].data.stats.deaths;
+            let assists = history[matchPosition].data.stats.assists;
             let kda = deaths != 0 ? ((kills + assists) / deaths).toFixed(2) : 'Perfeito';
 
+            // fetch(`http://ddragon.leagueoflegends.com/cdn/11.10.1/data/pt_BR/summoner.json`).
 
 
-            fetch(`summoner/getChampion/${history[history.length - 1].championId}`, {
+            fetch(`summoner/getChampion/${history[matchPosition].championId}`, {
                 method: 'GET'
             }).then((response) => {
                 if (response.ok) {
                     response.json().then(async (data) => {
 
                         document.querySelector('.history-container').innerHTML += `
-                        <div class="match">
+                        <div class="match" id="${matchPosition}">
                         <div class="general-stats">
                             <div class="champ-icon">
                                 <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/${data.name}.png" alt=""
