@@ -111,6 +111,12 @@
 
             let win = history[history.length - 1].data.stats.win;
             let cs = history[history.length - 1].data.stats.totalMinionsKilled;
+            let kills = history[history.length - 1].data.stats.kills;
+            let deaths = history[history.length - 1].data.stats.deaths;
+            let assists = history[history.length - 1].data.stats.assists;
+            let kda = deaths != 0 ? ((kills + assists) / deaths).toFixed(2) : 'Perfeito';
+
+
 
             fetch(`summoner/getChampion/${history[history.length - 1].championId}`, {
                 method: 'GET'
@@ -130,8 +136,8 @@
                                 ${win ? 'Vitória' : 'Derrota'}    
                                 </div>
                                 <div class="kda-holder">
-                                    <div class="kda">1/0/10</div>
-                                    <div class="ama">KDA: 3,2</div>
+                                    <div class="kda">${kills}/${deaths}/${assists}</div>
+                                    <div class="ama">KDA: ${kda}</div>
                                 </div>
                             </div>
                         </div>
