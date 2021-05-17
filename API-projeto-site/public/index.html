@@ -33,7 +33,9 @@
         <div class="content">
             <div class="profile-home">
                 <div class="history-container">
+                    <div class="match">
 
+                    </div>
                 </div>
             </div>
 
@@ -86,40 +88,13 @@
         let history = []
 
 
+        let insertMatch = () => {
+            document.querySelector('.match').innerHTML += history[history.length - 1].data.stats.win == true ? 'Vitória' : 'Derrota';
+            console.log(history[history.length - 1].data.stats);
 
-        // fillUserHistory = () => {
-        //     if (historyFilled == true) {
+        }
 
 
-        //         history.forEach(match => {
-        //             let inMatchId;
-        //             let newJson = {
-        //                 championId: match.championId,
-        //                 gameDuration: match.gameDuration,
-        //                 gameMode: match.gameMode,
-        //                 gameType: match.gameType,
-        //                 data: {},
-
-        //             }
-
-        //             match.participantIdentities.forEach((participant) => {
-        //                 if (user.accountId == participant.player.accountId) {
-        //                     inMatchId = participant.participantId;
-        //                 }
-        //             })
-
-        //             match.participants.forEach(player => {
-        //                 if (player.participantId == inMatchId) {
-        //                     newJson.data = player;
-        //                     userHistory.push(newJson);
-
-        //                 }
-        //             })
-
-        //         })
-
-        //     }
-        // }
 
         getMatchList = async () => {
             fetch(`summoner/getMatchList/${accId}`, {
@@ -175,6 +150,7 @@
 
 
                                         await history.push(newJson);
+                                        insertMatch();
 
                                     })
                                 } else {
@@ -186,6 +162,7 @@
 
                         })
                     });
+
                 } else {
                     console.log(response.statusText)
                 }
@@ -193,7 +170,13 @@
                 console.log(error);
             });
         }
+
+
         getMatchList();
+
+
+
+
 
 
 
