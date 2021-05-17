@@ -116,7 +116,7 @@
             let kills = history[matchPosition].data.stats.kills;
             let deaths = history[matchPosition].data.stats.deaths;
             let assists = history[matchPosition].data.stats.assists;
-            let kda = deaths != 0 ? ((kills + assists) / deaths).toFixed(2) : 'Perfeito';
+            let kda = deaths != 0 ? ((kills + assists) / deaths).toFixed(2) : (kills + assists);
 
             // fetch(`http://ddragon.leagueoflegends.com/cdn/11.10.1/data/pt_BR/summoner.json`).
 
@@ -126,14 +126,30 @@
             }).then((response) => {
                 if (response.ok) {
                     response.json().then(async (data) => {
+                        let spellOne = {};
+                        let spellTwo = {};
 
-                        document.querySelector('.history-container').innerHTML += `
+                        fetch(`summoner/getSpell/${history[matchPosition].data.spell1Id}`).then((response) => {
+                            if (response.ok) {
+                                response.json().then(async (spell) => {
+                                    spellOne = spell;
+                                    await true;
+
+                                    fetch(`summoner/getSpell/${history[matchPosition].data.spell2Id}`).then((response) => {
+                                        if (response.ok) {
+                                            response.json().then(async (spell) => {
+                                                spellTwo = spell;
+                                                await true;
+
+                                                document.querySelector('.history-container').innerHTML += `
                         <div class="match" id="${matchPosition}">
                         <div class="general-stats">
                             <div class="champ-icon">
-                                <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/${data.name}.png" alt=""
+                                <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/champion/${data.id}.png" alt=""
                                     srcset="">
                             </div>
+                            <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/spell/${spellOne.id}.png">
+                            <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/spell/${spellTwo.id}.png">
                             <div class="status-kda">
                                 <div class="status ${win ? 'win' : 'defeat'}">
                                 ${win ? 'Vitória' : 'Derrota'}    
@@ -152,6 +168,14 @@
                             <p>${cs}</p>
                         </div>
                     </div>`;
+
+
+                                            });
+                                        }
+                                    });
+                                });
+                            }
+                        });
                     })
                 }
             });

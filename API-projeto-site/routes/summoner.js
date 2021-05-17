@@ -115,4 +115,28 @@ router.get('/getChampion/:champId', async (req, res) => {
         return res.status(400).send('Ocorreu um erro');
     }
 })
+
+
+router.get('/getSpell/:spellId', async (req, res) => {
+    try {
+        const { spellId } = req.params;
+        let spellList = await kayn.DDragon.SummonerSpell.list();
+        spellList = spellList.data;
+        let summonerSpell = {}
+
+        for (let spell in spellList) {
+            if (spellList[spell].key == spellId) {
+                summonerSpell = spellList[spell];
+            }
+        }
+
+        return res.status(200).json(summonerSpell);
+    } catch (error) {
+        console.log(error);
+        return res.status(400).send('Ocorreu um erro');
+    }
+});
+
+
+
 module.exports = router;

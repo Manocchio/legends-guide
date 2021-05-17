@@ -14,6 +14,8 @@ logar = () => {
     sessionStorage.clear();
     let summoner = userInput.value;
 
+
+
     fetch(`summoner/getSummoner/${summoner}`, {
         method: 'GET',
     }).then((response) => {
