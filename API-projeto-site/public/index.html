@@ -64,7 +64,9 @@
                                     <img src="./img/top_icon.png" alt="">
                                 </div>
                             </div>
+
                         </div>
+
                         <div class="cs">
                             <div class="icon">
                                 <img src="https://streamie.com.br/wp-content/uploads/2017/08/img-icone-6.png" alt=""
@@ -137,7 +139,30 @@
             let kda = deaths != 0 ? ((kills + assists) / deaths).toFixed(2) : (kills + assists);
             let gameMode = history[matchPosition].gameMode;
             let lane = history[matchPosition].lane;
-            // fetch(`http://ddragon.leagueoflegends.com/cdn/11.10.1/data/pt_BR/summoner.json`).
+            let items = [
+                history[matchPosition].data.stats.item0,
+                history[matchPosition].data.stats.item1,
+                history[matchPosition].data.stats.item2,
+                history[matchPosition].data.stats.item3,
+                history[matchPosition].data.stats.item4,
+                history[matchPosition].data.stats.item5,
+                history[matchPosition].data.stats.item6,
+            ]
+
+
+            let listItems = () => {
+                let itemsString = ''
+                items.forEach((item) => {
+                    if (item != 0) {
+                        itemsString += '<div class="item"><img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/item/' + item + '.png"></div>';
+                    } else {
+                        itemsString += '<div class="item"></div>';
+                    }
+                })
+                return itemsString;
+            }
+
+            console.log(items);
 
             if (lane == 'NONE' && history[matchPosition].role == 'DUO_SUPPORT') {
                 lane = 'SUP';
@@ -197,6 +222,9 @@
                                 <div class="lane">
                                     <img src="${gameMode != 'ARAM' ? lane != 'NONE' ? './img/' + lane.toLowerCase() + '_icon.png' : '' : ''}" alt="">
                                 </div>
+                        </div>
+                        <div class="items">
+                            ${listItems()}
                         </div>
                           <div class="cs">
                             <div class="icon">
