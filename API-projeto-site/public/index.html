@@ -139,6 +139,11 @@
             let lane = history[matchPosition].lane;
             // fetch(`http://ddragon.leagueoflegends.com/cdn/11.10.1/data/pt_BR/summoner.json`).
 
+            if (lane == 'NONE' && history[matchPosition].role == 'DUO_SUPPORT') {
+                lane = 'SUP';
+            } else if (lane == 'BOTTOM' && history[matchPosition].role == 'DUO_SUPPORT') {
+                lane = 'SUP'
+            }
 
             fetch(`summoner/getChampion/${history[matchPosition].championId}`, {
                 method: 'GET'
@@ -185,8 +190,8 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="modeAndLane">
-                                <div class="gameMode ${gameMode == 'ARAM' ? 'aram' : ''}">
+                         <div class="modeAndLane ${gameMode == 'ARAM' ? 'aram' : ''}">
+                                <div class="gameMode">
                                     <img src="${gameMode == 'ARAM' ? './img/aram_icon.png' : './img/rift.png'}" alt="">
                                 </div>
                                 <div class="lane">

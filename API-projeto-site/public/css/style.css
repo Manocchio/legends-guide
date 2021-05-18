@@ -259,6 +259,7 @@ body.toLoad {
     display: flex;
     flex-direction: row;
     margin: 5px;
+    width: 240px;
 }
 
 .match .status-kda {
@@ -324,9 +325,9 @@ body.toLoad {
 
 .modeAndLane {
     display: flex;
-    height: initial;
+    height: 75%;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-left: 20px;
 }
 
@@ -342,6 +343,7 @@ body.toLoad {
 
 .modeAndLane.aram {
     justify-content: center;
+    height: auto;
 }
 
 .modeAndLane.aram .lane {
