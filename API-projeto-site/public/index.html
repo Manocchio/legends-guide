@@ -190,7 +190,7 @@
                                     <img src="${gameMode == 'ARAM' ? './img/aram_icon.png' : './img/rift.png'}" alt="">
                                 </div>
                                 <div class="lane">
-                                    <img src="${lane != 'NONE' ? './img/' + lane.toLowerCase() + '_icon.png' : ''}" alt="">
+                                    <img src="${gameMode != 'ARAM' ? lane != 'NONE' ? './img/' + lane.toLowerCase() + '_icon.png' : '' : ''}" alt="">
                                 </div>
                         </div>
                           <div class="cs">
