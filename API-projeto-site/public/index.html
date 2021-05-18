@@ -41,10 +41,12 @@
                             </div>
                             <div class="spells">
                                 <div class="spell">
-
+                                    <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/spell/SummonerFlash.png"
+                                        alt="" srcset="">
                                 </div>
                                 <div class="spell">
-
+                                    <img src="http://ddragon.leagueoflegends.com/cdn/11.10.1/img/spell/SummonerBarrier.png"
+                                        alt="" srcset="">
                                 </div>
                             </div>
                             <div class="status-kda">
@@ -52,6 +54,14 @@
                                 <div class="kda-holder">
                                     <div class="kda">1/0/10</div>
                                     <div class="ama">KDA: 3,2</div>
+                                </div>
+                            </div>
+                            <div class="modeAndLane">
+                                <div class="gameMode">
+                                    <img src="./img/rift.png" alt="">
+                                </div>
+                                <div class="lane">
+                                    <img src="./img/top_icon.png" alt="">
                                 </div>
                             </div>
                         </div>
@@ -125,7 +135,8 @@
             let deaths = history[matchPosition].data.stats.deaths;
             let assists = history[matchPosition].data.stats.assists;
             let kda = deaths != 0 ? ((kills + assists) / deaths).toFixed(2) : (kills + assists);
-
+            let gameMode = history[matchPosition].gameMode;
+            let lane = history[matchPosition].lane;
             // fetch(`http://ddragon.leagueoflegends.com/cdn/11.10.1/data/pt_BR/summoner.json`).
 
 
@@ -174,14 +185,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="cs">
+                         <div class="modeAndLane">
+                                <div class="gameMode ${gameMode == 'ARAM' ? 'aram' : ''}">
+                                    <img src="${gameMode == 'ARAM' ? './img/aram_icon.png' : './img/rift.png'}" alt="">
+                                </div>
+                                <div class="lane">
+                                    <img src="${lane != 'NONE' ? './img/' + lane.toLowerCase() + '_icon.png' : ''}" alt="">
+                                </div>
+                        </div>
+                          <div class="cs">
                             <div class="icon">
-                                <img src="https://streamie.com.br/wp-content/uploads/2017/08/img-icone-6.png" alt=""
-                                    class="src">
+                                <img src="https://streamie.com.br/wp-content/uploads/2017/08/img-icone-6.png" alt="">
                             </div>
                             <p>${cs}</p>
                         </div>
-                    </div>`;
+                    </div>
+                </div>`;
 
 
                                             });

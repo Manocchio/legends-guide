@@ -321,3 +321,29 @@ body.toLoad {
     height: 100%;
     border-radius: 5px;
 }
+
+.modeAndLane {
+    display: flex;
+    height: initial;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+}
+
+.modeAndLane .gameMode img, .modeAndlane .lane img {
+    width: 32px;
+}
+
+.modeAndLane .lane, .modeAndLane .gameMode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modeAndLane.aram {
+    justify-content: center;
+}
+
+.modeAndLane.aram .lane {
+    display: none;
+}
