@@ -259,7 +259,7 @@ body.toLoad {
     display: flex;
     flex-direction: row;
     margin: 5px;
-    width: 250px;
+    /* width: 250px; */
 }
 
 .match .status-kda {
@@ -355,7 +355,7 @@ body.toLoad {
     height: 40%;
     display: flex;
     flex-direction: row;
-    margin-left: 10px;
+    margin-left: 40px;
 }
 
 .items .item {
