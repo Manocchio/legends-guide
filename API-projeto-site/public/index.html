@@ -8,6 +8,8 @@
     <title>Site pessoal</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/loading.css">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -81,6 +83,19 @@
                                     class="src">
                             </div>
                             <p>140 CS</p>
+                        </div>
+                        <div class="gold">
+                            <i class="fas fa-coins"></i>
+                            <p>200</p>
+                        </div>
+
+                        <div class="date-duration">
+                            <div class="duration">
+                                <p>20:10</p>
+                            </div>
+                            <div class="date">
+                                <p>Há 5 horas atrás</p>
+                            </div>
                         </div>
 
                     </div> -->
@@ -156,7 +171,20 @@
                 history[matchPosition].data.stats.item5,
                 history[matchPosition].data.stats.item6,
             ]
+            let gold = history[matchPosition].data.stats.goldEarned;
+            gold = Number(gold).toLocaleString('pt-BR')
+            //converter timestamp :/
 
+            let unix_durationTimestamp = history[matchPosition].gameDuration;
+            let duration = new Date(unix_durationTimestamp * 1000);
+            let durationMinutes = "0" + duration.getMinutes();
+            let durationSeconds = "0" + duration.getSeconds();
+            let formattedDuration = durationMinutes.substr(-2) + ':' + durationSeconds.substr(-2);
+
+
+            let unix_timestamp = history[matchPosition].timestamp;
+            let date = new Date(unix_timestamp);
+            let formattedDate = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 
             let listItems = () => {
                 let itemsString = ''
@@ -239,6 +267,19 @@
                                 <img src="https://streamie.com.br/wp-content/uploads/2017/08/img-icone-6.png" alt="">
                             </div>
                             <p>${cs} CS</p>
+                        </div>
+                        <div class="gold">
+                            <i class="fas fa-coins"></i>
+                            <p>${gold}</p>
+                        </div>
+
+                        <div class="date-duration">
+                            <div class="duration">
+                                <p>${formattedDuration}</p>
+                            </div>
+                            <div class="date">
+                                <p>${formattedDate}</p>
+                            </div>
                         </div>
                     </div>
                 </div>`;
