@@ -15,7 +15,7 @@ const title = document.querySelector('.toWrite');
 typeWriter(title);
 
 
-let userInput = document.querySelector('#name');
+let userInput = document.querySelector('#userInput');
 let passwordInput = document.querySelector('#password');
 let confirmPassInput = document.querySelector('#confirmPassword');
 
@@ -31,8 +31,6 @@ cadastrar = () => {
     sessionStorage.clear();
     let summoner = userInput.value;
 
-
-
     fetch(`summoner/getSummoner/${summoner}`, {
         method: 'GET',
     }).then((response) => {
@@ -43,7 +41,10 @@ cadastrar = () => {
                 window.location = 'index.html';
             });
         } else {
-            console.log('Esse usuário não existe')
+            document.querySelector('#summonerNick').classList.add('invalid');
+            setTimeout(() => {
+                document.querySelector('#summonerNick').classList.toggle('invalid');
+            }, 1500);
         }
     });
 
