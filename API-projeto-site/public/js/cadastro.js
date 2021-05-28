@@ -56,7 +56,7 @@ cadastrar = () => {
                     method: 'POST',
                 }).then((response) => {
                     if (response.ok) {
-                        sessionStorage.setItem('user', JSON.stringify(userInfo));
+
                         alert('cadastrou');
                     }
                 })

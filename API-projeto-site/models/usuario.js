@@ -6,7 +6,7 @@ https://codewithhugo.com/sequelize-data-types-a-practical-guide/
 */
 
 module.exports = (sequelize, DataTypes) => {
-	let Usuario = sequelize.define('Usuario', {
+	let Usuario = sequelize.define('tbUser', {
 		idUser: {
 			field: 'idUser',
 			type: DataTypes.INTEGER,

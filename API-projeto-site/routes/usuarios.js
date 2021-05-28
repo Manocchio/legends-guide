@@ -9,25 +9,35 @@ let sessoes = [];
 router.post('/autenticar', function (req, res, next) {
 	console.log('Recuperando usuário por login e senha');
 
-	var login = req.body.login; // depois de .body, use o nome (name) do campo em seu formulário de login
-	var senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login	
+	var login = req.body.name; // depois de .body, use o nome (name) do campo em seu formulário de login
+	var senha = req.body.password; // depois de .body, use o nome (name) do campo em seu formulário de login	
 
-	let instrucaoSql = `select * from usuario where login='${login}' and senha='${senha}'`;
+	let instrucaoSql = `select * from tbUser where nameUser='${login}' and pass='${senha}'`;
 	console.log(instrucaoSql);
 
 	sequelize.query(instrucaoSql, {
 		model: Usuario
 	}).then(resultado => {
-		console.log(`Encontrados: ${resultado.length}`);
+		console.log(`Encontrados: ${JSON.stringify(resultado[0])}`);
 
-		if (resultado.length == 1) {
-			sessoes.push(resultado[0].dataValues.login);
-			console.log('sessoes: ', sessoes);
-			res.json(resultado[0]);
-		} else if (resultado.length == 0) {
-			res.status(403).send('Login e/ou senha inválido(s)');
+		if (resultado.length != 0) {
+			sessoes.push(resultado[0].idUser);
+
+			let newJson = resultado.pop();
+			let user = {
+				idUser: newJson[0].idUser,
+				puuid: newJson[0].puuid,
+				riotId: newJson[0].riotId,
+				accId: newJson[0].accId,
+				nameUser: newJson[0].nameUser,
+				iconId: newJson[0].iconId,
+				summonerLevel: newJson[0].summonerLevel
+			}
+
+
+			res.status(200).json(user);
 		} else {
-			res.status(403).send('Mais de um usuário com o mesmo login e senha!');
+			res.status(403).send('Login e/ou senha inválido(s)');
 		}
 
 	}).catch(erro => {
@@ -41,7 +51,7 @@ router.post('/cadastrar/:user', function (req, res, next) {
 	let user = req.params.user;
 	user = JSON.parse(user);
 
-	Usuario.create({
+	tbUser.create({
 		puuid: user.puuid,
 		riotId: user.riotId,
 		accId: user.accId,

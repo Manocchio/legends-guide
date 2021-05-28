@@ -3,7 +3,7 @@ let pageContent = document.querySelector('.page-content')
 let user = sessionStorage.getItem('user');
 user = JSON.parse(user);
 
-username.innerHTML = user.name;
+username.innerHTML = user.nameUser;
 level.innerHTML = user.summonerLevel;
 
 
@@ -11,11 +11,11 @@ level.innerHTML = user.summonerLevel;
 
 
 let icon = document.querySelector('#summonerIcon');
-icon.src = `http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/${user.profileIconId}.png`;
+icon.src = `http://ddragon.leagueoflegends.com/cdn/11.10.1/img/profileicon/${user.iconId}.png`;
 
 
 
-let accId = user.accountId;
+let accId = user.accId;
 let matchList = {}
 let history = []
 let championData = {};
@@ -170,7 +170,7 @@ let insertMatch = async () => {
 
 
 getMatchList = async () => {
-    fetch(`summoner/getMatchList/${accId}`, {
+    fetch(`summoner/getMatchList/${user.accId}`, {
         method: 'GET',
     }).then((response) => {
         if (response.ok) {
@@ -210,7 +210,7 @@ getMatchList = async () => {
                                 newJson.participantIdentities = data.participantIdentities;
 
                                 newJson.participantIdentities.forEach((participant) => {
-                                    if (user.accountId == participant.player.accountId) {
+                                    if (user.accId == participant.player.accountId) {
                                         inMatchId = participant.participantId;
                                     }
                                 })

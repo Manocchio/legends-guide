@@ -1,3 +1,4 @@
+
 let video = document.querySelector('#login-video');
 video.volume = 0.1;
 let userInput = document.querySelector('#name');
@@ -15,20 +16,23 @@ logar = () => {
     let summoner = userInput.value;
 
 
-
-    fetch(`summoner/getSummoner/${summoner}`, {
-        method: 'GET',
+    let form = new URLSearchParams(new FormData(formLogin))
+    fetch('usuarios/autenticar', {
+        method: 'POST',
+        body: form,
     }).then((response) => {
         if (response.ok) {
             response.json().then(async (data) => {
-                let userInfo = await data.summoner;
+                let userInfo = await data;
                 sessionStorage.setItem('user', JSON.stringify(userInfo));
                 window.location = 'index.html';
-            });
+            })
         } else {
-            console.log('Esse usuário não existe')
+            alert('usuário n existe');
         }
-    });
+    })
+
+
 
 
 }
