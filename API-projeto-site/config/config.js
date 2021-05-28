@@ -13,7 +13,7 @@ module.exports = {
         encrypt: true
       }
     },
-    pool: { 
+    pool: {
       max: 5,
       min: 1,
       acquire: 5000,
@@ -25,9 +25,9 @@ module.exports = {
   // Insira aqui seus dados do banco LOCAL - MySQL Workbench
   dev: {
     // altere APENAS username, password e database.
-    username: 'SEU USUARIO DO WORKBENCH, provavelmente é root',
-    password: 'SUA SENHA DO WORKBENCH',
-    database: 'SEU DATABASE DO CREATE DATABASE',
+    username: 'root',
+    password: '',
+    database: 'smguide',
     host: '127.0.0.1',
     dialect: 'mysql',
     xuse_env_variable: 'DATABASE_URL',
@@ -36,7 +36,7 @@ module.exports = {
         encrypt: true
       }
     },
-    pool: { 
+    pool: {
       max: 5,
       min: 1,
       acquire: 5000,

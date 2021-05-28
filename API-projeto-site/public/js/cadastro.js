@@ -37,14 +37,38 @@ cadastrar = () => {
         if (response.ok) {
             response.json().then(async (data) => {
                 let userInfo = await data.summoner;
-                sessionStorage.setItem('user', JSON.stringify(userInfo));
-                window.location = 'index.html';
+
+
+
+                let user = {
+                    puuid: userInfo.puuid,
+                    riotId: userInfo.id,
+                    accId: userInfo.accountId,
+                    nameUser: userInfo.name,
+                    iconId: userInfo.profileIconId,
+                    summonerLevel: userInfo.summonerLevel,
+                    pass: passwordInput.value,
+                }
+
+
+
+                fetch(`usuarios/cadastrar/${JSON.stringify(user)}`, {
+                    method: 'POST',
+                }).then((response) => {
+                    if (response.ok) {
+                        sessionStorage.setItem('user', JSON.stringify(userInfo));
+                        alert('cadastrou');
+                    }
+                })
+
             });
         } else {
             document.querySelector('#summonerNick').classList.add('invalid');
+            document.querySelector('#userInput').value = '';
+            document.querySelector('#userInput').placeholder = 'Digite um invocador existente';
             setTimeout(() => {
                 document.querySelector('#summonerNick').classList.toggle('invalid');
-            }, 1500);
+            }, 5000);
         }
     });
 

@@ -287,10 +287,20 @@ button[type="submit"].filled i {
 
 .input-field.invalid {
     background-color: #be29cc69;
+    animation: vibration 0.5s ease;
+}
+
+@keyframes vibration {
+    0%, 20% {
+        margin-left: 1.5px;
+    }
+    10%, 30% {
+        margin-left: 2.5px;
+    }
 }
 
 .input-field.invalid input {
-    color: #3d0942;
+    color: #000;
     outline-color: #781881;
 }
 

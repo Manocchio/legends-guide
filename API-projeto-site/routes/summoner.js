@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const { Kayn, REGIONS } = require('kayn');
-const apiKey = "RGAPI-20e75293-428b-4033-b4bf-0ea94701ee27";
+const apiKey = "RGAPI-a2d5b546-0c0b-4e84-bc7d-513914c1b0ba";
 
 
 

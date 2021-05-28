@@ -1,4 +1,4 @@
-	'use strict';
+'use strict';
 
 /* 
 lista e explicação dos Datatypes:
@@ -6,35 +6,57 @@ https://codewithhugo.com/sequelize-data-types-a-practical-guide/
 */
 
 module.exports = (sequelize, DataTypes) => {
-    let Usuario = sequelize.define('Usuario',{
-		id: {
-			field: 'id',
+	let Usuario = sequelize.define('Usuario', {
+		idUser: {
+			field: 'idUser',
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
-		},		
-		nome: {
-			field: 'nome',
+		},
+		puuid: {
+			field: 'puuid',
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		riotId: {
+			field: 'riotId',
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		login: {
-			field: 'login',
+		accId: {
+			field: 'accId',
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		senha: {
-			field: 'senha',
+		nameUser: {
+			field: 'nameUser',
 			type: DataTypes.STRING,
 			allowNull: false
-		}
-	}, 
-	{
-		tableName: 'usuario', 
-		freezeTableName: true, 
-		underscored: true,
-		timestamps: false,
-	});
+		},
+		iconId: {
+			field: 'iconId',
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
+		summonerLevel: {
+			field: 'summonerLevel',
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
+		pass: {
+			field: 'pass',
+			type: DataTypes.STRING,
+			allowNull: false,
 
-    return Usuario;
+		}
+
+	},
+		{
+			tableName: 'tbUser',
+			freezeTableName: true,
+			underscored: true,
+			timestamps: false,
+		});
+
+	return Usuario;
 };
