@@ -21,41 +21,37 @@ let history = []
 let championData = {};
 
 let winCount = 0;
+let ctx = document.getElementById('myChart').getContext('2d');
+let myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Vitórias', 'Derrotas'],
+        datasets: [{
 
-// let ctx = document.getElementById('myChart').getContext('2d');
+            data: [1, 1],
+            backgroundColor: [
+                '#2fccc9',
+                'rgba(255,255,255,0.1)'
+            ],
+            borderColor: [
+                '#000',
+            ],
 
+            borderWidth: 2
+        }]
+    },
+    options: {
 
+        legend: {
 
-// let myChart = new Chart(ctx, {
-//     type: 'doughnut',
-//     data: {
-//         labels: ['Vitórias', 'Derrotas'],
-//         datasets: [{
+            position: 'bottom',
+            labels: {
+                fontColor: "#fff"
+            }
+        },
 
-//             data: [1, 1],
-//             backgroundColor: [
-//                 '#2fccc9',
-//                 'rgba(255,255,255,0.1)'
-//             ],
-//             borderColor: [
-//                 '#000',
-//             ],
-
-//             borderWidth: 2
-//         }]
-//     },
-//     options: {
-
-//         legend: {
-
-//             position: 'bottom',
-//             labels: {
-//                 fontColor: "#fff"
-//             }
-//         },
-
-//     }
-// });
+    }
+});
 
 
 
@@ -113,6 +109,15 @@ let insertMatch = async () => {
     if (win) {
         winCount++;
     }
+
+
+
+    myChart.data.datasets[0].data[0] = winCount;
+    myChart.data.datasets[0].data[1] = history.length - winCount;
+    myChart.update();
+    percent = (winCount * 100) / history.length;
+    document.querySelector('#winPercent').innerHTML = `${parseInt(percent)}%`;
+
 
 
     if (lane == 'NONE' && history[matchPosition].role == 'DUO_SUPPORT') {
