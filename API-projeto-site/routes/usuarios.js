@@ -22,17 +22,16 @@ router.post('/autenticar', function (req, res, next) {
 		console.log(`Encontrados: ${JSON.stringify(resultado[0])}`);
 
 		if (resultado.length != 0) {
-			sessoes.push(resultado[0].idUser);
 
 			let newJson = resultado.pop();
 			let user = {
-				idUser: newJson[0].idUser,
-				puuid: newJson[0].puuid,
-				riotId: newJson[0].riotId,
-				accId: newJson[0].accId,
-				nameUser: newJson[0].nameUser,
-				iconId: newJson[0].iconId,
-				summonerLevel: newJson[0].summonerLevel
+				idUser: newJson.idUser,
+				puuid: newJson.puuid,
+				riotId: newJson.riotId,
+				accId: newJson.accId,
+				nameUser: newJson.nameUser,
+				iconId: newJson.iconId,
+				summonerLevel: newJson.summonerLevel
 			}
 
 

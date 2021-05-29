@@ -245,7 +245,7 @@ getMatchList = async () => {
 }
 
 
-getMatchList();
+// getMatchList();
 
 
 
