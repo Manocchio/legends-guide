@@ -59,3 +59,34 @@ window.addEventListener("scroll", () => {
     }
     lastScrollTop = atualPosition <= 0 ? 0 : atualPosition;
 });
+
+
+let ctx = document.getElementById('myChart').getContext('2d');
+let myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+            data: [4, 6],
+            backgroundColor: [
+                '#f00',
+                '#00f'
+            ],
+            borderColor: [
+                '#000',
+            ],
+
+            borderWidth: 2
+        }]
+    },
+    options: {
+
+        legend: {
+
+            position: 'bottom',
+            labels: {
+                fontColor: "#fff"
+            }
+        },
+
+    }
+});
