@@ -48,15 +48,15 @@ if (!alreadyLoaded) {
 
 let lastScrollTop = 0;
 
-// window.addEventListener("scroll", () => {
-//     let atualPosition = window.pageYOffset;
-//     if (atualPosition > lastScrollTop) {
-//         this.document.querySelector('.principal-bg').classList.add('scrolled')
-//     } else {
-//         if (atualPosition == 0) {
-//             this.document.querySelector('.principal-bg').classList.remove('scrolled');
-//         }
-//     }
-//     lastScrollTop = atualPosition <= 0 ? 0 : atualPosition;
-// });
+window.addEventListener("scroll", () => {
+    let atualPosition = window.pageYOffset;
+    if (atualPosition > lastScrollTop) {
+        this.document.querySelector('.principal-bg').classList.add('scrolled')
+    } else {
+        if (atualPosition == 0) {
+            this.document.querySelector('.principal-bg').classList.remove('scrolled');
+        }
+    }
+    lastScrollTop = atualPosition <= 0 ? 0 : atualPosition;
+});
 
