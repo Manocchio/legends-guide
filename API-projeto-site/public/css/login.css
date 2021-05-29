@@ -160,6 +160,20 @@
     height: 100px;
 }
 
+.hasAccount {
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.hasAccount a {
+    text-decoration: none;
+    color: #707070;
+}
+
+.hasAccount a:hover {
+    color: #333333;
+}
+
 button[type="submit"] {
     border: 2.5px solid #e8e8e8;
     background-color: #fff;

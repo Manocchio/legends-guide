@@ -12,6 +12,7 @@ router.post('/autenticar', function (req, res, next) {
 	var login = req.body.name; // depois de .body, use o nome (name) do campo em seu formulário de login
 	var senha = req.body.password; // depois de .body, use o nome (name) do campo em seu formulário de login	
 
+
 	let instrucaoSql = `select * from tbUser where nameUser='${login}' and pass='${senha}'`;
 	console.log(instrucaoSql);
 
@@ -51,7 +52,7 @@ router.post('/cadastrar/:user', function (req, res, next) {
 	let user = req.params.user;
 	user = JSON.parse(user);
 
-	tbUser.create({
+	Usuario.create({
 		puuid: user.puuid,
 		riotId: user.riotId,
 		accId: user.accId,

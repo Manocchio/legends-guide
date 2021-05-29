@@ -6,7 +6,7 @@ https://codewithhugo.com/sequelize-data-types-a-practical-guide/
 */
 
 module.exports = (sequelize, DataTypes) => {
-	let Usuario = sequelize.define('tbUser', {
+	let Usuario = sequelize.define('Usuario', {
 		idUser: {
 			field: 'idUser',
 			type: DataTypes.INTEGER,
@@ -48,7 +48,14 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false,
 
+		},
+		fkLane: {
+			field: 'fkLane',
+			type: DataTypes.INTEGER,
+			foreignKey: true,
+			allowNull: true,
 		}
+
 
 	},
 		{

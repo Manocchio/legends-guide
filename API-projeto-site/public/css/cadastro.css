@@ -170,7 +170,7 @@ button[type="submit"] {
     border: 2.5px solid #e8e8e8;
     background-color: #fff;
     width: 90px;
-    margin: 30px auto;
+    margin: 15px auto;
     border-radius: 30px;
     height: 80px;
     outline: none;
@@ -288,6 +288,20 @@ button[type="submit"].filled i {
 .input-field.invalid {
     background-color: #be29cc69;
     animation: vibration 0.5s ease;
+}
+
+.hasAccount {
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.hasAccount a {
+    text-decoration: none;
+    color: #707070;
+}
+
+.hasAccount a:hover {
+    color: #333333;
 }
 
 @keyframes vibration {
