@@ -300,7 +300,7 @@ getMatchList = async () => {
 }
 
 
-getMatchList();
+// getMatchList();
 
 
 let historyContainer = document.querySelector('.history-container');
@@ -346,8 +346,6 @@ let historyFilled = setInterval(() => {
         }
 
         clearInterval(historyFilled);
-    } else {
-        console.log(history.length);
     }
 }, 500);
 

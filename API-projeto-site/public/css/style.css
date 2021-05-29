@@ -406,14 +406,11 @@ body.toLoad {
     height: 350px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin: 10px auto;
     display: flex;
     justify-content: center;
     position: relative;
     align-items: center;
-    margin-right: auto;
-    margin-left: 5%;
 }
 
 .winrate-content {
@@ -430,4 +427,42 @@ body.toLoad {
     font-size: 1.5em;
     margin: 10px 0;
     color: #fff;
+}
+
+.profile-statistics {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-left: 5%;
+    flex-direction: row;
+    height: auto;
+}
+
+.winrate-container {
+    width: auto;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+}
+
+.winrate-detail {
+    font-family: 'FF Mark W05';
+    width: 350px;
+    margin-bottom: 10px;
+    margin-top: 40px;
+    font-size: 10px;
+    text-align: center;
+    color: #2fccc9;
+}
+
+.maestry-container {
+    width: 500px;
+    height: 350px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-right: 7.4%;
+    margin-left: auto;
+    flex-grow: 2;
+    margin-bottom: 10px;
 }
