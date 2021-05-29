@@ -60,3 +60,32 @@ window.addEventListener("scroll", () => {
     lastScrollTop = atualPosition <= 0 ? 0 : atualPosition;
 });
 
+
+let home = document.getElementById('homeRoute');
+let guide = document.getElementById('guideRoute');
+
+let homePage = document.getElementById('homePage');
+let guidePage = document.getElementById('guidePage');
+
+goTo = (page) => {
+    if (page == 'home') {
+        if (homePage.classList.contains('inactive')) {
+            guidePage.classList.add('inactive');
+            homePage.classList.remove('inactive');
+        }
+    } else if (page == 'guide') {
+        if (guidePage.classList.contains('inactive')) {
+            homePage.classList.add('inactive');
+            guidePage.classList.remove('inactive');
+        }
+
+    }
+}
+
+
+home.addEventListener('click', () => {
+    goTo('home');
+});
+guide.addEventListener('click', () => {
+    goTo('guide');
+});
