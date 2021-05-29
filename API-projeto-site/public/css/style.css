@@ -410,7 +410,20 @@ body.toLoad {
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
+    position: relative;
     align-items: center;
+    margin-right: auto;
+    margin-left: 5%;
+}
+
+.winrate-content {
+    font-family: 'FF Mark W05';
+    font-weight: bold;
+    position: absolute;
+    color: #fff;
+    top: 47%;
+    right: 37%;
+    font-size: 2rem;
 }
 
 .title.history {

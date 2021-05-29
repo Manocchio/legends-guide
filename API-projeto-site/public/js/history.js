@@ -20,6 +20,48 @@ let matchList = {}
 let history = []
 let championData = {};
 
+let winCount = 0;
+
+// let ctx = document.getElementById('myChart').getContext('2d');
+
+
+
+// let myChart = new Chart(ctx, {
+//     type: 'doughnut',
+//     data: {
+//         labels: ['Vitórias', 'Derrotas'],
+//         datasets: [{
+
+//             data: [1, 1],
+//             backgroundColor: [
+//                 '#2fccc9',
+//                 'rgba(255,255,255,0.1)'
+//             ],
+//             borderColor: [
+//                 '#000',
+//             ],
+
+//             borderWidth: 2
+//         }]
+//     },
+//     options: {
+
+//         legend: {
+
+//             position: 'bottom',
+//             labels: {
+//                 fontColor: "#fff"
+//             }
+//         },
+
+//     }
+// });
+
+
+
+
+
+
 let insertMatch = async () => {
 
     let matchPosition = history.length - 1;
@@ -67,7 +109,6 @@ let insertMatch = async () => {
         return itemsString;
     }
 
-    console.log(items);
 
     if (lane == 'NONE' && history[matchPosition].role == 'DUO_SUPPORT') {
         lane = 'SUP';
@@ -87,15 +128,14 @@ let insertMatch = async () => {
                     if (response.ok) {
                         response.json().then(async (spell) => {
                             spellOne = spell;
-                            await true;
 
                             fetch(`summoner/getSpell/${history[matchPosition].data.spell2Id}`).then((response) => {
                                 if (response.ok) {
                                     response.json().then(async (spell) => {
                                         spellTwo = spell;
-                                        await true;
 
-                                        document.querySelector('.history-container').innerHTML += `
+
+                                        let newElement = `
                         <div class="match" id="${matchPosition}">
                         <div class="general-stats">
                             <div class="champ-icon">
@@ -152,6 +192,23 @@ let insertMatch = async () => {
                         </div>
                     </div>
                 </div>`;
+                                        let historyContainer = document.querySelector('.history-container');
+
+                                        historyContainer.innerHTML += newElement;
+
+
+
+
+                                        // if (win) {
+                                        //     winCount++;
+                                        // }
+
+                                        // myChart.data.datasets[0].data[0] = winCount;
+                                        // myChart.data.datasets[0].data[1] = history.length - winCount;
+                                        // myChart.update();
+                                        // percent = (winCount * 100) / history.length;
+                                        // document.querySelector('#winPercent').innerHTML = `${parseInt(percent)}%`;
+
 
 
                                     });
@@ -166,6 +223,8 @@ let insertMatch = async () => {
 
 
 }
+
+
 
 
 
@@ -245,12 +304,48 @@ getMatchList = async () => {
 }
 
 
-// getMatchList();
+getMatchList();
+
+
+let historyContainer = document.querySelector('.history-container');
+
+
+function bubble(arr) {
+    var len = arr.length;
+
+    for (var i = 0; i < len; i++) {
+        for (var j = 0; j < len - i - 1; j++) {
+            if (parseInt(arr[j].id) > parseInt(arr[j + 1].id)) {
+                var temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+
+    return arr;
+}
 
 
 
 
+let historyFilled = setInterval(() => {
+    if (history.length == 10) {
 
+        let historyChildNodes = Array.from(historyContainer.children)
+        let ordenedChilds = bubble(historyChildNodes);
+
+
+        for (let i = 0; historyChildNodes.length; i++) {
+            historyContainer.appendChild(ordenedChilds[i]);
+        }
+
+        clearInterval(historyFilled);
+    } else {
+        console.log(history.length);
+    }
+}, 500);
 
 
 
