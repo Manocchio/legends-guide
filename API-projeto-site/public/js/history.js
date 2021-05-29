@@ -110,6 +110,11 @@ let insertMatch = async () => {
     }
 
 
+    if (win) {
+        winCount++;
+    }
+
+
     if (lane == 'NONE' && history[matchPosition].role == 'DUO_SUPPORT') {
         lane = 'SUP';
     } else if (lane == 'BOTTOM' && history[matchPosition].role == 'DUO_SUPPORT') {
@@ -195,20 +200,6 @@ let insertMatch = async () => {
                                         let historyContainer = document.querySelector('.history-container');
 
                                         historyContainer.innerHTML += newElement;
-
-
-
-
-                                        // if (win) {
-                                        //     winCount++;
-                                        // }
-
-                                        // myChart.data.datasets[0].data[0] = winCount;
-                                        // myChart.data.datasets[0].data[1] = history.length - winCount;
-                                        // myChart.update();
-                                        // percent = (winCount * 100) / history.length;
-                                        // document.querySelector('#winPercent').innerHTML = `${parseInt(percent)}%`;
-
 
 
                                     });
@@ -330,14 +321,22 @@ function bubble(arr) {
 
 
 
+
+
+let historyChildNodes = Array.from(historyContainer.children)
+let ordenedChilds = bubble(historyChildNodes);
+
+
+
+
 let historyFilled = setInterval(() => {
-    if (history.length == 10) {
 
-        let historyChildNodes = Array.from(historyContainer.children)
-        let ordenedChilds = bubble(historyChildNodes);
+    if (historyContainer.children.length == 10) {
 
+        historyChildNodes = Array.from(historyContainer.children)
+        ordenedChilds = bubble(historyChildNodes);
 
-        for (let i = 0; historyChildNodes.length; i++) {
+        for (let i = 0; i < historyContainer.children.length; i++) {
             historyContainer.appendChild(ordenedChilds[i]);
         }
 
