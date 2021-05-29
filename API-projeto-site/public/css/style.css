@@ -495,9 +495,12 @@ body.toLoad {
     display: flex;
     background-color: #050d12;
     flex-direction: row;
+    overflow: hidden;
 }
 
 .riftSection img {
+    transition: 1s;
+    animation: moveUpAndDown 2.5s infinite;
     width: 700px;
 }
 
@@ -529,4 +532,13 @@ body.toLoad {
 
 .option:hover {
     background-color: rgba(0, 0, 0, 0.9);
+}
+
+@keyframes moveUpAndDown {
+    0%, 100% {
+        transform: translateY(2%);
+    }
+    50% {
+        transform: translateY(-1.5%);
+    }
 }
