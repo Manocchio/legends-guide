@@ -1,0 +1,28 @@
+@import url(//db.onlinewebfonts.com/c/12420e8c141ca7c3dff41de2d59df13e?family=BeaufortforLOL-Bold);
+@font-face {
+    font-family: "FF Mark W05";
+    src: url(https://lolstatic-a.akamaihd.net/accounts-fonts/FFMarkW05-Medium.662fbc7901e31d6bee9c91d5f2cf42a1.woff2) format("woff2"), url(https://lolstatic-a.akamaihd.net/accounts-fonts/FFMarkW05-Medium.ef7af500d9837d3d390db15c32e93167.woff) format("woff"), url(https://lolstatic-a.akamaihd.net/accounts-fonts/FFMarkW05-Medium.e857052c6a4c940090ac8470ecdaf9be.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.principal-bg {
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://lolstatic-a.akamaihd.net/frontpage/apps/prod/clash-2018/pt_BR/a46e742ae82f9d4f9db8e34ba57873e513e727b7/assets/static/img/backgrounds/team-up-bg.jpg');
+    background-size: cover;
+}
+
+.principal-bg h1 {
+    font-weight: bold;
+    font-family: 'FF Mark W05';
+    text-align: center;
+    color: #fff;
+    font-size: 3.5em;
+    padding-top: 15px;
+}
