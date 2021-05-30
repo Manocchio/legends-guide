@@ -499,7 +499,7 @@ body.toLoad {
 }
 
 .riftSection img {
-    transition: 1s;
+    transition: 1s ease-out;
     animation: moveUpAndDown 2.5s infinite;
     width: 700px;
 }
@@ -536,9 +536,9 @@ body.toLoad {
 
 @keyframes moveUpAndDown {
     0%, 100% {
-        transform: translateY(2%);
+        transform: translateY(3.5%);
     }
     50% {
-        transform: translateY(-1.5%);
+        transform: translateY(-2.5%);
     }
 }
