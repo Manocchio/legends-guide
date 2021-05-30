@@ -303,7 +303,7 @@ getMatchList = async () => {
 }
 
 
-getMatchList();
+// getMatchList();
 
 
 let historyContainer = document.querySelector('.history-container');

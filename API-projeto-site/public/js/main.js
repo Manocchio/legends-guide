@@ -83,9 +83,19 @@ goTo = (page) => {
 }
 
 
+logout = () => {
+    sessionStorage.removeItem('user');
+    window.location.replace('login.html');
+}
+
+
 home.addEventListener('click', () => {
     goTo('home');
 });
 guide.addEventListener('click', () => {
     goTo('guide');
 });
+
+document.getElementById('logout').addEventListener('click', () => {
+    logout();
+})

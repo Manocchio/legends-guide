@@ -21,6 +21,7 @@ sendToDb = () => {
             method: 'POST',
         }).then((response) => {
             if (response.ok) {
+                sessionStorage.removeItem('cadastroUser');
                 window.location.replace('login.html');
             }
         })
