@@ -11,6 +11,10 @@
     padding: 0;
 }
 
+body {
+    overflow: hidden;
+}
+
 svg {
     display: none;
 }
@@ -35,7 +39,7 @@ svg {
     padding-top: 15px;
 } */
 
-.choosing, .selected-role {
+.choosing, .selected-role, .error-bg {
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -43,7 +47,19 @@ svg {
     top: 0;
     left: 0;
     pointer-events: none;
-    filter: hue-rotate(-100deg);
+    filter: hue-rotate(-120deg) saturate(150%);
+}
+
+.error-bg {
+    display: none;
+    pointer-events: all;
+    filter: hue-rotate(130deg);
+    background-image: url('../img/lanes/all-lanes.png');
+    animation: vibrate 0.25s infinite;
+}
+
+.error-bg.visible {
+    display: initial;
 }
 
 .selected-role {
@@ -212,5 +228,33 @@ svg {
 @keyframes toggle {
     to {
         box-shadow: 0 0 50px #673ab7, inset 0 0 20px #673ab7;
+    }
+}
+
+@keyframes vibrate {
+    0% {
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    25% {
+        margin-left: 5px;
+        margin-top: 5px;
+        margin-bottom: -5px;
+    }
+    50% {
+        margin-left: 0;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    75% {
+        margin-top: -5px;
+        margin-left: -5px;
+        margin-bottom: -5px;
+    }
+    100% {
+        margin-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0;
     }
 }

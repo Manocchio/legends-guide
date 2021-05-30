@@ -59,6 +59,7 @@ router.post('/cadastrar/:user', function (req, res, next) {
 		iconId: user.iconId,
 		summonerLevel: user.summonerLevel,
 		pass: user.pass,
+		fkRole: user.fkRole
 	}).then(resultado => {
 		console.log(`Registro criado: ${resultado}`)
 		res.send(resultado);

@@ -56,7 +56,18 @@ INSERT INTO tbRole(nomeRole, descRole) VALUES
 	,('MID','O Mid Laner, geralmente, tem mais liberdade para se movimentar pelo mapa e auxiliar os demais jogadores a realizar alguma ação.')
     ,('ADC','O AD Carry é um dos personagens mais importantes do jogo, mas sem dúvida nenhuma é o mais frágil e o mais focado durante as team fights.')
     ,('SUP','Os suportes têm o objetivo de atender todas as necessidades de seu time. Além de proteger seu atirador, o sup ')
-    ,('JUNGLER','');
+    ,('JUNGLE','O jungle é o principal responsável por chamar objetivos. Ele é o jogador que deve ter atenção para onde o time deve rodar, o que deve ser feito no momento e quando vai poder ser feito.');
+
+
+
+INSERT INTO tbAtribuicao(fkLane,fkRole,descAtribuicao) VALUES 
+	(1,1,'TOP')
+    ,(2,2, 'MID')
+    ,(3,3, 'DUO_CARRY')
+    ,(3, 4, 'DUO_SUPPORT' )
+    ,(4,5, 'JUNGLE');
+
+
+
+SELECT * FROM tbRole;
     
-    
-select * from tbUser;

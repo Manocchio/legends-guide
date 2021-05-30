@@ -48,18 +48,24 @@ cadastrar = () => {
                     iconId: userInfo.profileIconId,
                     summonerLevel: userInfo.summonerLevel,
                     pass: passwordInput.value,
+                    fkRole: null,
                 }
 
 
 
-                fetch(`usuarios/cadastrar/${JSON.stringify(user)}`, {
-                    method: 'POST',
-                }).then((response) => {
-                    if (response.ok) {
 
-                        alert('cadastrou');
-                    }
-                })
+                sessionStorage.setItem('cadastroUser', JSON.stringify(user));
+
+
+                window.location.replace('chooseLane.html')
+                // fetch(`usuarios/cadastrar/${JSON.stringify(user)}`, {
+                //     method: 'POST',
+                // }).then((response) => {
+                //     if (response.ok) {
+
+                //         alert('cadastrou');
+                //     }
+                // })
 
             });
         } else {

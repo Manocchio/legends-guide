@@ -1,3 +1,39 @@
+let user = sessionStorage.getItem('cadastroUser');
+user = JSON.parse(user);
+
+sendToDb = () => {
+
+
+    if (selected != null && selected != undefined) {
+        if (selected.id == 'topSelect') {
+            user.fkRole = 1;
+        } else if (selected.id == 'midSelect') {
+            user.fkRole = 2;
+        } else if (selected.id == 'bottomSelect') {
+            user.id = 3;
+        } else if (selected.id == 'supSelect') {
+            user.id = 4;
+        } else if (selected.id == 'jgSelect') {
+            user.id = 5;
+        }
+
+        fetch(`usuarios/cadastrar/${JSON.stringify(user)}`, {
+            method: 'POST',
+        }).then((response) => {
+            if (response.ok) {
+                window.location.replace('login.html');
+            }
+        })
+
+    } else {
+        document.querySelector('.error-bg').classList.add('visible')
+        setTimeout(() => {
+            document.querySelector('.error-bg').classList.remove('visible')
+
+        }, 400)
+    }
+
+}
 
 
 

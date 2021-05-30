@@ -49,8 +49,8 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 
 		},
-		fkLane: {
-			field: 'fkLane',
+		fkRole: {
+			field: 'fkRole',
 			type: DataTypes.INTEGER,
 			foreignKey: true,
 			allowNull: true,
