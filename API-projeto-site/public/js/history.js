@@ -21,6 +21,7 @@ let history = []
 let championData = {};
 
 let winCount = 0;
+
 let ctx = document.getElementById('myChart').getContext('2d');
 let myChart = new Chart(ctx, {
     type: 'doughnut',
@@ -225,6 +226,8 @@ let insertMatch = async () => {
 
 
 getMatchList = async () => {
+
+
     fetch(`summoner/getMatchList/${user.accId}`, {
         method: 'GET',
     }).then((response) => {
@@ -300,7 +303,7 @@ getMatchList = async () => {
 }
 
 
-// getMatchList();
+getMatchList();
 
 
 let historyContainer = document.querySelector('.history-container');

@@ -9,6 +9,23 @@ CREATE TABLE tbLane (
 );
 
 
+CREATE TABLE tbRole(
+	idRole INT PRIMARY KEY AUTO_INCREMENT,
+    nomeRole VARCHAR (50) NOT NULL, 
+    descRole VARCHAR(300) NOT NULL
+);
+
+
+CREATE TABLE tbAtribuicao(
+	fkRole INT,
+    fkLane INT, 
+    descAtribuicao VARCHAR(300) NOT NULL,
+	FOREIGN KEY(fkRole) REFERENCES tbRole(idRole),
+    FOREIGN KEY(fkLane) REFERENCES tbLane(idLane),
+    PRIMARY KEY(fkRole,fkLane)
+);
+
+
 CREATE TABLE tbUser (
 	idUser INT  PRIMARY KEY AUTO_INCREMENT,
     puuid VARCHAR(100) NOT NULL,
@@ -18,8 +35,8 @@ CREATE TABLE tbUser (
     iconId INT NOT NULL,
     summonerLevel INT NOT NULL,
     pass VARCHAR(100),
-    fkLane INT,
-    FOREIGN KEY(fkLane) REFERENCES tbLane(idLane)
+    fkRole INT,
+    FOREIGN KEY(fkRole) REFERENCES tbRole(idRole)
 );
 
 
@@ -34,3 +51,12 @@ INSERT INTO tbLane(nomeLane, descLane) VALUES
 
 
 
+INSERT INTO tbRole(nomeRole, descRole) VALUES 
+	('TOP','A função do Top Laner é ditar o ritmo de jogo e ajudar garantir que os objetivos sejam feitos ')
+	,('MID','O Mid Laner, geralmente, tem mais liberdade para se movimentar pelo mapa e auxiliar os demais jogadores a realizar alguma ação.')
+    ,('ADC','O AD Carry é um dos personagens mais importantes do jogo, mas sem dúvida nenhuma é o mais frágil e o mais focado durante as team fights.')
+    ,('SUP','Os suportes têm o objetivo de atender todas as necessidades de seu time. Além de proteger seu atirador, o sup ')
+    ,('JUNGLER','');
+    
+    
+select * from tbUser;
