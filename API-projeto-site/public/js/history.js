@@ -303,7 +303,7 @@ getMatchList = async () => {
 }
 
 
-// getMatchList();
+getMatchList();
 
 
 

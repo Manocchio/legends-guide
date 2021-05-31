@@ -77,3 +77,5 @@ SELECT u.nameUser,nomeRole, descRole FROM tbUser as u
 	INNER JOIN tbRole as r
 		ON u.fkRole = r.idRole
 	WHERE idUser = 3;
+
+
