@@ -27,58 +27,83 @@ let filled = {
 
 
 
+invalidate = (field, input, message) => {
+    document.querySelector(field).classList.add('invalid');
+    document.querySelector(input).value = '';
+    document.querySelector(input).placeholder = message;
+    setTimeout(() => {
+        document.querySelector(field).classList.toggle('invalid');
+        document.querySelector(input).placeholder = '';
+        if (document.querySelector(input).value == '') {
+            document.querySelector(input).nextElementSibling.classList.remove('focused');
+        }
+
+    }, 5000);
+}
+
+
 cadastrar = () => {
     sessionStorage.clear();
     let summoner = userInput.value;
 
-    fetch(`summoner/getSummoner/${summoner}`, {
-        method: 'GET',
-    }).then((response) => {
-        if (response.ok) {
-            response.json().then(async (data) => {
-                let userInfo = await data.summoner;
+
+    if (passwordInput.value != confirmPassInput.value) {
+        invalidate('#passField', '#password', 'As senhas não estão iguais');
+        invalidate('#confirmPassField', '#confirmPassword', 'As senhas não estão iguais');
+    } else if (passwordInput.value.length < 3) {
+        invalidate('#passField', '#password', 'Senha muito pequena');
+    } else {
+
+        fetch(`summoner/getSummoner/${summoner}`, {
+            method: 'GET',
+        }).then((response) => {
+            if (response.ok) {
+                response.json().then(async (data) => {
+                    let userInfo = await data.summoner;
+
+                    fetch(`usuarios/verify/${summoner}`).then((response) => {
+                        if (response.ok) {
+                            response.json().then((data) => {
+                                if (data.exists) {
+                                    invalidate('#summonerNick', '#userInput', 'Invocador já possui cadastro');
+
+                                } else {
+
+                                    let user = {
+                                        puuid: userInfo.puuid,
+                                        riotId: userInfo.id,
+                                        accId: userInfo.accountId,
+                                        nameUser: userInfo.name,
+                                        iconId: userInfo.profileIconId,
+                                        summonerLevel: userInfo.summonerLevel,
+                                        pass: passwordInput.value,
+                                        fkRole: null,
+                                    }
 
 
 
-                let user = {
-                    puuid: userInfo.puuid,
-                    riotId: userInfo.id,
-                    accId: userInfo.accountId,
-                    nameUser: userInfo.name,
-                    iconId: userInfo.profileIconId,
-                    summonerLevel: userInfo.summonerLevel,
-                    pass: passwordInput.value,
-                    fkRole: null,
-                }
+
+                                    sessionStorage.setItem('cadastroUser', JSON.stringify(user));
 
 
+                                    window.location.replace('chooseLane.html')
+
+                                }
+                            })
+                        }
+                    }).catch((error) => {
+                        console.log(error);
+                    })
 
 
-                sessionStorage.setItem('cadastroUser', JSON.stringify(user));
+                });
+            } else {
 
+                invalidate('#summonerNick', '#userInput', 'Digite um invocador existente');
 
-                window.location.replace('chooseLane.html')
-                // fetch(`usuarios/cadastrar/${JSON.stringify(user)}`, {
-                //     method: 'POST',
-                // }).then((response) => {
-                //     if (response.ok) {
-
-                //         alert('cadastrou');
-                //     }
-                // })
-
-            });
-        } else {
-            document.querySelector('#summonerNick').classList.add('invalid');
-            document.querySelector('#userInput').value = '';
-            document.querySelector('#userInput').placeholder = 'Digite um invocador existente';
-            setTimeout(() => {
-                document.querySelector('#summonerNick').classList.toggle('invalid');
-            }, 5000);
-        }
-    });
-
-
+            }
+        });
+    }
 }
 
 

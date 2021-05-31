@@ -41,7 +41,7 @@ CREATE TABLE tbUser (
 
 
 
-
+SELECT nameUser FROM tbUser WHERE nameUser = 'MXLX';
 INSERT INTO tbLane(nomeLane, descLane) VALUES 
 	('TOP', 'Rota Superior do Summoner’s Rift, próximo do Covil do Arauto e do Barão')
     ,('MID', 'A Mid lane é uma das mais importantes do jogo, justamente por estar no meio do mapa e, consequentemente, próxima às outras duas rotas e aos objetivos globais, Dragão e Barão')
@@ -70,4 +70,6 @@ INSERT INTO tbAtribuicao(fkLane,fkRole,descAtribuicao) VALUES
 
 
 SELECT * FROM tbRole;
-    
+
+
+SELECT * FROM tbUser;

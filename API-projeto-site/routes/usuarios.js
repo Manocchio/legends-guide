@@ -46,6 +46,27 @@ router.post('/autenticar', function (req, res, next) {
 	});
 });
 
+
+router.get('/verify/:nameUser', (req, res) => {
+	let name = req.params.nameUser;
+
+
+	let newQuery = `SELECT nameUser FROM tbUser WHERE nameUser = '${name}';`
+
+	sequelize.query(newQuery, {
+		model: Usuario
+	}).then((response) => {
+		if (response.length != 0) {
+			res.json({ exists: true });
+		} else {
+			res.json({ exists: false });
+		}
+	}).catch((error) => {
+		console.log(error);
+	})
+})
+
+
 /* Cadastrar usuário */
 router.post('/cadastrar/:user', function (req, res, next) {
 	let user = req.params.user;
