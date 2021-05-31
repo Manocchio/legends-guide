@@ -11,6 +11,23 @@ let filled = {
 
 
 
+
+invalidate = (field, input, message) => {
+    document.querySelector(field).classList.add('invalid');
+    document.querySelector(input).value = '';
+    document.querySelector(input).placeholder = message;
+    setTimeout(() => {
+        document.querySelector(field).classList.toggle('invalid');
+        document.querySelector(input).placeholder = '';
+        if (document.querySelector(input).value == '') {
+            document.querySelector(input).nextElementSibling.classList.remove('focused');
+        }
+
+    }, 5000);
+}
+
+
+
 logar = () => {
     sessionStorage.clear();
     let summoner = userInput.value;
@@ -29,7 +46,13 @@ logar = () => {
                 window.location = 'index.html';
             })
         } else {
-            alert('usuário n existe');
+            invalidate('#nameField', '#name', 'Usuário ou senha Inválidos');
+            filled.user = false;
+            invalidate('#passField', '#password', 'Usuário ou senha Inválidos');
+            filled.pass = false;
+
+            checkFilled();
+
         }
     })
 
