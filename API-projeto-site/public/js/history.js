@@ -306,6 +306,32 @@ getMatchList = async () => {
 // getMatchList();
 
 
+
+let favoriteRole = {}
+
+fetch(`/usuarios/getUserRole/${user.idUser}`).then((res) => {
+
+
+
+    if (res.ok) {
+        res.json().then((data) => {
+
+
+            favoriteRole = data.role;
+
+
+            document.querySelector('#roleImg').src = `./img/lanesHD/${favoriteRole.nomeRole}.png`
+            document.querySelector('#roleDescription').innerHTML = favoriteRole.descRole;
+
+        })
+
+    }
+
+}).catch((error) => {
+    console.log(error);
+})
+
+
 let historyContainer = document.querySelector('.history-container');
 
 

@@ -466,8 +466,20 @@ body.toLoad {
     background-color: rgba(0, 0, 0, 0.8);
     margin-right: 7.4%;
     margin-left: auto;
-    flex-grow: 2;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
     margin-bottom: 10px;
+    font-family: 'FF Mark W05';
+    font-size: 20px;
+}
+
+.about-choosedLane {
+    width: 65%;
+    /* background-color: #fff; */
 }
 
 .inactive {
@@ -557,6 +569,27 @@ body.toLoad {
     margin-top: 30px;
     margin-right: 45px;
     margin-bottom: 30px;
+}
+
+.lane-img {
+    width: 60%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #fff; */
+}
+
+.lane-img img {
+    width: 100%;
+}
+
+.winrate-detail.purple {
+    color: #fff;
+    width: 90%;
+    text-align: center;
+    margin-left: 0;
+    font-size: 16px;
 }
 
 @keyframes moveUpAndDown {

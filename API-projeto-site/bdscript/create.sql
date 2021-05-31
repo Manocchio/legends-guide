@@ -40,8 +40,9 @@ CREATE TABLE tbUser (
 );
 
 
+SELECT * FROM tbRole; 
 
-SELECT nameUser FROM tbUser WHERE nameUser = 'MXLX';
+
 INSERT INTO tbLane(nomeLane, descLane) VALUES 
 	('TOP', 'Rota Superior do Summoner’s Rift, próximo do Covil do Arauto e do Barão')
     ,('MID', 'A Mid lane é uma das mais importantes do jogo, justamente por estar no meio do mapa e, consequentemente, próxima às outras duas rotas e aos objetivos globais, Dragão e Barão')
@@ -52,7 +53,7 @@ INSERT INTO tbLane(nomeLane, descLane) VALUES
 
 
 INSERT INTO tbRole(nomeRole, descRole) VALUES 
-	('TOP','A função do Top Laner é ditar o ritmo de jogo e ajudar garantir que os objetivos sejam feitos ')
+	('TOP','A função do Top Laner é ditar o ritmo de jogo e ajudar a garantir que os objetivos sejam feitos. ')
 	,('MID','O Mid Laner, geralmente, tem mais liberdade para se movimentar pelo mapa e auxiliar os demais jogadores a realizar alguma ação.')
     ,('ADC','O AD Carry é um dos personagens mais importantes do jogo, mas sem dúvida nenhuma é o mais frágil e o mais focado durante as team fights.')
     ,('SUP','Os suportes têm o objetivo de atender todas as necessidades de seu time. Além de proteger seu atirador, o sup ')
@@ -69,7 +70,10 @@ INSERT INTO tbAtribuicao(fkLane,fkRole,descAtribuicao) VALUES
 
 
 
-SELECT * FROM tbRole;
-
-
 SELECT * FROM tbUser;
+
+
+SELECT u.nameUser,nomeRole, descRole FROM tbUser as u
+	INNER JOIN tbRole as r
+		ON u.fkRole = r.idRole
+	WHERE idUser = 3;

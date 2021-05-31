@@ -10,11 +10,11 @@ sendToDb = () => {
         } else if (selected.id == 'midSelect') {
             user.fkRole = 2;
         } else if (selected.id == 'bottomSelect') {
-            user.id = 3;
+            user.fkRole = 3;
         } else if (selected.id == 'supSelect') {
-            user.id = 4;
+            user.fkRole = 4;
         } else if (selected.id == 'jgSelect') {
-            user.id = 5;
+            user.fkRole = 5;
         }
 
         fetch(`usuarios/cadastrar/${JSON.stringify(user)}`, {

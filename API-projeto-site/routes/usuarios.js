@@ -64,7 +64,25 @@ router.get('/verify/:nameUser', (req, res) => {
 	}).catch((error) => {
 		console.log(error);
 	})
-})
+});
+
+router.get('/getUserRole/:idUser', (req, res) => {
+	let id = req.params.idUser;
+
+	let newQuery = `
+		SELECT u.nameUser,nomeRole, descRole FROM tbUser as u
+			INNER JOIN tbRole as r
+				ON u.fkRole = r.idRole
+			WHERE idUser = ${id};`;
+
+	sequelize.query(newQuery, {
+		model: Usuario
+	}).then((response) => {
+		res.json({ role: response[0] });
+	}).catch((error) => {
+		console.log(error);
+	})
+});
 
 
 /* Cadastrar usuário */
@@ -128,6 +146,7 @@ router.get('/sair/:login', function (req, res, next) {
 	sessoes = nova_sessoes;
 	res.send(`Sessão do usuário ${login} finalizada com sucesso!`);
 });
+
 
 
 /* Recuperar todos os usuários */

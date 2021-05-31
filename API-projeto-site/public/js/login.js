@@ -24,6 +24,7 @@ logar = () => {
         if (response.ok) {
             response.json().then(async (data) => {
                 let userInfo = await data;
+
                 sessionStorage.setItem('user', JSON.stringify(userInfo));
                 window.location = 'index.html';
             })
